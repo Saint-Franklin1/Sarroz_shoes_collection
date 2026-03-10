@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createOrder } from "@/server/orders/createOrder";
 
+
 //codex/build-full-stack-ecommerce-platform-for-sarroz-shoes-cmb1um
+ main
 import { rateLimitByIp } from "@/lib/rateLimit";
 import { estimateDistanceFromShop } from "@/lib/geo";
 
@@ -28,7 +30,7 @@ export async function POST(req: NextRequest) {
   } catch (error) {
     const message = error instanceof Error ? error.message : "Invalid checkout input";
     return NextResponse.json({ message }, { status: 400 });
-=======
+
 
 export async function POST(req: NextRequest) {
   try {
@@ -38,5 +40,6 @@ export async function POST(req: NextRequest) {
   } catch {
     return NextResponse.json({ message: "Invalid checkout input" }, { status: 400 });
  main
+
   }
 }

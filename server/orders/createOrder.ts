@@ -12,7 +12,9 @@ const checkoutSchema = z.object({
   deliveryAddress: z.string().min(4),
   deliveryType: z.enum(["HOME_DELIVERY", "PICKUP"]),
   paymentMethod: z.enum(["MPESA", "PAYHERO", "PAYPAL", "PAY_ON_DELIVERY"]),
+
 //codex/build-full-stack-ecommerce-platform-for-sarroz-shoes-cmb1um
+
   distanceKm: z.coerce.number().min(0).default(0),
   items: z.array(z.object({ productId: z.string(), quantity: z.number().int().positive() })).min(1),
 });
@@ -95,6 +97,7 @@ export async function createOrder(payload: unknown, ipAddress?: string) {
     return { order, payment };
   });
 
+
   distanceKm: z.coerce.number().default(0),
   items: z.array(z.object({ productId: z.string(), quantity: z.number().int().positive() })).default([]),
 });
@@ -148,4 +151,5 @@ export async function createOrder(payload: unknown) {
 
   return order;
 main
+
 }

@@ -87,7 +87,7 @@ export default async function AdminAnalyticsPage({
         {topSelling.map(([name, quantity]) => <p key={name}>{name} — {quantity} sold</p>)}
         {!topSelling.length && <p className="text-slate-500">No sales in selected range.</p>}
       </div>
-=======
+
 import { prisma } from "@/lib/prisma";
 
 export default async function AdminAnalyticsPage() {
@@ -104,6 +104,7 @@ export default async function AdminAnalyticsPage() {
       <div className="rounded bg-white p-4 shadow">Total Revenue: KES {totalRevenue.toLocaleString()}</div>
       <div className="rounded bg-white p-4 shadow">Top Selling Product IDs: {[...productCounts.entries()].sort((a,b)=>b[1]-a[1]).slice(0,3).map(([id])=>id).join(", ") || "N/A"}</div>
  main
+
     </div>
   );
 }

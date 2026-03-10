@@ -1,2 +1,24 @@
-# Sarroz_shoes_collection
-A mini-jumia e-commerce platform for selling shoes for sarroz shoes collection, a vendor based in eldoret.
+# SARROZ Shoes Collection Ecommerce
+
+Full-stack single-vendor ecommerce built with Next.js 14 + TypeScript + Tailwind + Prisma/PostgreSQL.
+
+## Features
+- Public storefront with product browsing, search, product detail pages, reviews, cart, and guest checkout.
+- Admin-only dashboard (NextAuth credentials) for products, orders, categories, analytics, discounts, and reviews.
+- Delivery fee engine with configurable zones in DB.
+- Payment abstraction for M-Pesa, PayHero, PayPal, and Pay on Delivery.
+- Notifications via Resend (email) and WhatsApp Cloud API.
+
+## Setup
+1. Install dependencies: `npm install`
+2. Configure env: `cp .env.example .env`
+3. Prisma:
+   - `npx prisma migrate dev --name init`
+   - `npm run prisma:seed`
+4. Run app: `npm run dev`
+
+## Seeded Admin
+- Email: `roserocky92@gmail.com`
+- Phone: `0715118292`
+- Temporary password: `Rose92@.29`
+- `mustChangePassword` is enabled on seed.

@@ -19,6 +19,9 @@ export default async function ProductDetail({ params }: { params: { id: string }
   if (!product) notFound();
 
   const avg = product.reviews.length ? Math.round(product.reviews.reduce((a, r) => a + r.rating, 0) / product.reviews.length) : 0;
+//codex/build-full-stack-ecommerce-platform-for-sarroz-shoes-cmb1um
+  const outOfStock = product.stockStatus === "OUT_OF_STOCK" || product.stockQuantity <= 0;
+ main
 
   return (
     <article className="grid gap-6 md:grid-cols-2">
@@ -33,9 +36,16 @@ export default async function ProductDetail({ params }: { params: { id: string }
         <p>{product.description}</p>
         <p className="mt-2 text-sm">Size range: {product.sizeRange}</p>
         <p className="text-sm">Color: {product.color}</p>
+        
+        //codex/build-full-stack-ecommerce-platform-for-sarroz-shoes-cmb1um
+        <p className="text-sm">Stock: {outOfStock ? "OUT OF STOCK" : `IN STOCK (${product.stockQuantity})`}</p>
+        <div className="mt-4 flex gap-3">
+          <button disabled={outOfStock} className="rounded bg-black px-4 py-2 text-white disabled:cursor-not-allowed disabled:bg-slate-400">Add to Cart</button>
+
         <p className="text-sm">Stock: {product.stockStatus.replaceAll("_", " ")}</p>
         <div className="mt-4 flex gap-3">
           <button className="rounded bg-black px-4 py-2 text-white">Add to Cart</button>
+          main
           <a href={`https://wa.me/254715118292?text=I%20want%20to%20order%20${encodeURIComponent(product.name)}`} className="rounded bg-green-600 px-4 py-2 text-white">WhatsApp Order</a>
         </div>
       </div>

@@ -62,6 +62,11 @@ model Product {
   sizeRange       String
   color           String
   stockStatus     StockStatus
+
+//codex/build-full-stack-ecommerce-platform-for-sarroz-shoes-cmb1um
+  stockQuantity   Int            @default(0)
+
+main
   createdAt       DateTime       @default(now())
   images          ProductImage[]
   reviews         Review[]
@@ -84,6 +89,9 @@ model Order {
   deliveryType    DeliveryType
   paymentMethod   PaymentMethod
   orderStatus     OrderStatus   @default(PENDING)
+//codex/build-full-stack-ecommerce-platform-for-sarroz-shoes-cmb1um
+  ipAddress       String?
+ main
   deliveryFee     Decimal       @db.Decimal(10, 2)
   totalAmount     Decimal       @db.Decimal(10, 2)
   createdAt       DateTime      @default(now())

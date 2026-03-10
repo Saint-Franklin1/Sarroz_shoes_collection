@@ -8,6 +8,17 @@ export async function GET() {
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
+//codex/build-full-stack-ecommerce-platform-for-sarroz-shoes-cmb1um
+  const stockQuantity = Number(body.stockQuantity ?? 0);
+  const product = await prisma.product.create({
+    data: {
+      ...body,
+      stockQuantity,
+      stockStatus: stockQuantity > 0 ? "IN_STOCK" : "OUT_OF_STOCK",
+    },
+  });
+=======
   const product = await prisma.product.create({ data: body });
+ main
   return NextResponse.json(product);
 }

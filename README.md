@@ -22,3 +22,4 @@ Full-stack single-vendor ecommerce built with Next.js 14 + TypeScript + Tailwind
 - Phone: `0715118292`
 - Temporary password: `Rose92@.29`
 - `mustChangePassword` is enabled on seed.
+

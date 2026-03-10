@@ -1,4 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
+
+//codex/build-full-stack-ecommerce-platform-for-sarroz-shoes-cmb1um
+ main
 import { prisma } from "@/lib/prisma";
 import { ensureAdminSession } from "@/lib/adminAuth";
 import { createCloudinarySignature, destroyCloudinaryAsset } from "@/lib/cloudinary";
@@ -38,4 +41,15 @@ export async function DELETE(req: NextRequest) {
   if (publicId) await destroyCloudinaryAsset(publicId);
 
   return NextResponse.json({ message: "Image removed", imageId: image.id });
+
+
+export async function POST(req: NextRequest) {
+  const { imageBase64 } = await req.json();
+  if (!imageBase64) return NextResponse.json({ message: "Image required" }, { status: 400 });
+  return NextResponse.json({
+    message: "Upload endpoint placeholder. Integrate Cloudinary signed upload in production.",
+    imageUrl: "https://res.cloudinary.com/demo/image/upload/v1/sarroz/uploaded-image.jpg",
+  });
+ main
+main
 }

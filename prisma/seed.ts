@@ -35,7 +35,13 @@ async function main() {
         sizeRange: "38-45",
         color: "Black / White",
         stockStatus: StockStatus.IN_STOCK,
+
         stockQuantity: 20,
+
+//codex/build-full-stack-ecommerce-platform-for-sarroz-shoes-cmb1um
+        stockQuantity: 20,
+ main
+
       },
     });
 

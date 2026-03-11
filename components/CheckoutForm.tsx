@@ -2,7 +2,10 @@
 
 import { useState } from "react";
 
+//codex/build-full-stack-ecommerce-platform-for-sarroz-shoes-geagn6
+
 //codex/build-full-stack-ecommerce-platform-for-sarroz-shoes-cmb1um
+
 type EstimateResult = { distanceKm: number; feeKes: number };
 
 export function CheckoutForm() {
@@ -48,6 +51,8 @@ export function CheckoutForm() {
     const data = await res.json();
     setStatus(data.message || "Order submitted");
     if (res.ok) localStorage.removeItem("sarroz-cart");
+//codex/build-full-stack-ecommerce-platform-for-sarroz-shoes-geagn6
+
 
 export function CheckoutForm() {
   const [status, setStatus] = useState("");
@@ -58,6 +63,7 @@ export function CheckoutForm() {
     const data = await res.json();
     setStatus(data.message || "Order submitted");
  main
+
   }
 
   return (
@@ -66,8 +72,10 @@ export function CheckoutForm() {
       <input name="phone" placeholder="Phone number" className="w-full rounded border p-2" required />
       <input name="email" placeholder="Email" className="w-full rounded border p-2" required type="email" />
       <input name="deliveryAddress" placeholder="Delivery address" className="w-full rounded border p-2" required />
+
         
       //codex/build-full-stack-ecommerce-platform-for-sarroz-shoes-cmb1um
+
       <input name="website" className="hidden" tabIndex={-1} autoComplete="off" />
 
       <button
@@ -84,7 +92,10 @@ export function CheckoutForm() {
 
       {estimate && <p className="text-sm text-slate-600">Distance: {estimate.distanceKm} km | Delivery Fee: KES {estimate.feeKes}</p>}
 
+//codex/build-full-stack-ecommerce-platform-for-sarroz-shoes-geagn6
+
 main
+
       <select name="deliveryType" className="w-full rounded border p-2" defaultValue="HOME_DELIVERY">
         <option value="HOME_DELIVERY">Home Delivery</option>
         <option value="PICKUP">Pickup</option>

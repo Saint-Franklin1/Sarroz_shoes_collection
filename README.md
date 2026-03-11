@@ -23,8 +23,10 @@ Full-stack single-vendor ecommerce built with Next.js 14 + TypeScript + Tailwind
 - Temporary password: `Rose92@.29`
 - `mustChangePassword` is enabled on seed.
 
+//codex/build-full-stack-ecommerce-platform-for-sarroz-shoes-geagn6
 ## New Improvements Added
 - Cloudinary signed upload signature endpoint + media controls (attach/remove images with max 5 per product).
 - Stock synchronization during checkout with out-of-stock protection and auto stock status updates.
 - Enhanced analytics dashboard with date filters, AOV, payment/status mix, top products, and CSV export.
 - Checkout anti-spam protections (honeypot + IP rate limiting) and automatic address distance estimation.
+

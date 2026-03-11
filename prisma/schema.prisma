@@ -1,0 +1,129 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum StockStatus {
+  IN_STOCK
+  OUT_OF_STOCK
+}
+
+enum DeliveryType {
+  HOME_DELIVERY
+  PICKUP
+}
+
+enum PaymentMethod {
+  MPESA
+  PAYHERO
+  PAYPAL
+  PAY_ON_DELIVERY
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  CONFIRMED
+  DISPATCHED
+  DELIVERED
+  CANCELLED
+}
+
+model AdminUser {
+  id                   String   @id @default(cuid())
+  email                String   @unique
+  phone                String
+  passwordHash         String
+  mustChangePassword   Boolean  @default(true)
+  createdAt            DateTime @default(now())
+}
+
+model Category {
+  id        String    @id @default(cuid())
+  name      String    @unique
+  createdAt DateTime  @default(now())
+  products  Product[]
+}
+
+model Product {
+  id              String         @id @default(cuid())
+  name            String
+  seoTitle        String?
+  metaDescription String?
+  description     String
+  price           Decimal        @db.Decimal(10, 2)
+  discountPrice   Decimal?       @db.Decimal(10, 2)
+  categoryId      String
+  category        Category       @relation(fields: [categoryId], references: [id])
+  sizeRange       String
+  color           String
+  stockStatus     StockStatus
+  stockQuantity   Int            @default(0)
+  createdAt       DateTime       @default(now())
+  images          ProductImage[]
+  reviews         Review[]
+  orderItems      OrderItem[]
+}
+
+model ProductImage {
+  id        String   @id @default(cuid())
+  productId String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  imageUrl  String
+}
+
+model Order {
+  id              String        @id @default(cuid())
+  customerName    String
+  phone           String
+  email           String
+  deliveryAddress String
+  deliveryType    DeliveryType
+  paymentMethod   PaymentMethod
+  orderStatus     OrderStatus   @default(PENDING)
+  ipAddress       String?
+  deliveryFee     Decimal       @db.Decimal(10, 2)
+  totalAmount     Decimal       @db.Decimal(10, 2)
+  createdAt       DateTime      @default(now())
+  items           OrderItem[]
+}
+
+model OrderItem {
+  id        String   @id @default(cuid())
+  orderId   String
+  order     Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product  @relation(fields: [productId], references: [id])
+  quantity  Int
+  price     Decimal  @db.Decimal(10, 2)
+}
+
+model Review {
+  id        String   @id @default(cuid())
+  productId String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  rating    Int
+  comment   String
+  approved  Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model DiscountCode {
+  id                 String   @id @default(cuid())
+  code               String   @unique
+  discountPercentage Int
+  active             Boolean  @default(true)
+}
+
+model DeliveryZone {
+  id            String   @id @default(cuid())
+  label         String   @unique
+  minKm         Int
+  maxKm         Int?
+  feeKes        Int
+  createdAt     DateTime @default(now())
+}
